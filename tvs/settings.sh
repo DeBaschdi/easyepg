@@ -163,6 +163,11 @@ do
 		sed -i -e 1c'\{\n "items": \[' /tmp/chlist
 		echo '}' >> /tmp/chlist
 
+    ######################################
+    # Dirty Workaround until TVS fix their Channellist
+    curl -s https://raw.githubusercontent.com/sunsettrack4/config_files/master/chlist_hack_tvs.json > /tmp/chlist
+    #######################################
+
 		printf "\rLoading channel configuration..."
 		perl cid_json.pl > /tmp/chvalues
 		sed -i '/{/d;/}/d;s/.*":"//g;s/",//g;/DUMMY/d' /tmp/chvalues
